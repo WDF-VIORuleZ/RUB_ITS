@@ -1,0 +1,16 @@
+MO Aktionsteller     Rindergulasch mit Buchweizen   3,60 4,60
+MO Komponentenessen  Rinderroulade Hausfrauenart    2,00 3,00
+MO Vegetarisch       Nudelpfanne Quattro Formaggio  2,20 3,30
+DI Aktionsteller     Schweinenacken in Meerrettich  3,60 4,60
+DI Komponentenessen  Mariniertes Putensteak         2,00 3,00
+DI Vegetarisch       Chili sin Carne mit Baguette   2,20 3,30
+MI Aktionsteller     Rippchen in Honigmarinade      3,60 4,60
+MI Komponentenessen  Haehnchengeschnetzeltes        2,00 3,00
+MI Vegetarisch       Kuerbis-Zucchinipfanne         2,20 3,30
+DO Aktionsteller     Bigos (Polnische Woche)        3,60 4,60
+DO Komponentenessen  Schweineschnitzel mit Paprika  2,00 3,00
+DO Vegetarisch       Linseneintopf mit Bockwurst    2,20 3,30
+FR Tagessuppe        Sauermehlsuppe Zurek           0,80 0,90
+FR Aktionsteller     Schweinsruecken mit Pflaumen   3,60 4,60
+FR Komponentenessen  Schollenfilet mit Senfsauce    2,00 3,00
+FR Vegetarisch       Spinat-Auflauf mit Mischsalat  2,20 3,30
