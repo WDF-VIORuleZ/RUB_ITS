@@ -1,0 +1,8 @@
+#!/bin/bash
+
+day=("MO.txt" "DI.txt" "MI.txt" "DO.txt" "FR.txt")
+
+for i in "${day[@]}"
+do
+    rm $i
+done
