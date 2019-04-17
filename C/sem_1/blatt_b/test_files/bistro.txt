@@ -1,9 +1,0 @@
-MO Essen 1           Schweinegeschnetzeltes         2,20 3,20
-MO Essen 2           Frisches Wok Gemuese           2,20 3,20
-MO Study Fit         Gemueseeintopf Bockwurst       2,20 3,20
-DI Essen 1           Bratwurst                      2,20 3,20
-DI Essen 2           Chili sin Carne mit Baguette   2,20 3,20
-DI Study Fit         Kalbfleisch-Hackbaellchen      3,80 5,00
-MI Essen 1           Paniertes Seelachsfilet        2,20 3,20
-MI Essen 2           Mediterrane Pennepfanne        2,20 3,20
-MI Study Fit         Hueftsteak auf Schmorzwiebeln  3,80 5,00
