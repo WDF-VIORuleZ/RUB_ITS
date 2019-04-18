@@ -1,0 +1,61 @@
+#!/bin/python3
+
+import sys
+
+def to_bitstring(x):
+    return bin(x)[2:] 
+
+def power_to_bit(powers=list):
+    """
+        list must be sorted! (low to high) (sorted(X))
+    
+    for x in powers:
+        print(x)
+    """
+
+    result = list( (int(powers[len(powers) - 1]) + 1) * '0')
+    for exp in powers:
+        # print("Pos: " + str(int(exp) - 1))
+        result[int(exp)] = '1'
+
+    return result[::-1]
+
+def pol_div(pol, mod):
+    remainder = pol
+    divident = mod
+
+    count = 1
+    while ((divident | remainder) > 2 * divident):
+        divident <<= 1
+        count += 1
+
+    quotient = 0
+    while (count>0):
+        quotient <<= 1
+        count -= 1
+        if(remainder ^ divident) < remainder:
+            quotient |= 1
+            remainder ^= divident
+        divident >>= 1
+
+    print("Remainder: " + to_bitstring(remainder))
+    print("Quotient: " + to_bitstring(quotient))
+
+
+def main():
+    #
+    #   
+    #   Example:
+    #   console input (x^3 + x^2 + 1) / x : poly_div "{3, 2, 0}" "{1}" 
+
+    poly = sys.argv[1].strip('{').strip('}').strip(' ').split(',')
+    mod  = sys.argv[2].strip('{').strip('}').strip(' ').split(',')
+
+    print(power_to_bit(sorted(poly)))
+    print(int(str(power_to_bit(sorted(poly)))))
+
+    pol_div(str(power_to_bit(sorted(poly))), str(power_to_bit(sorted(mod))))
+
+if __name__ == "__main__":
+    main()
+    
