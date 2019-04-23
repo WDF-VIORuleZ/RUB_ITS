@@ -1,4 +1,5 @@
 #!/bin/python3
+# http://www.inf.fh-flensburg.de/lang/krypto/grund/inverses-element.htm
 
 import sys
 
