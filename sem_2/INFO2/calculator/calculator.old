@@ -1,0 +1,109 @@
+#include "calculator.h"
+#include <iostream>
+
+#include <stdio.h>
+
+Calculator::Calculator()
+{
+}
+
+Calculator::~Calculator()
+{
+}
+
+int Calculator::succ(int x)         //x++
+{
+	return ++x;
+}
+
+int Calculator::neg(int x)          //-x
+{
+	return -x;
+}
+
+// define the following functions using only: "succ", "neg" and functions defined above (e.g. you can use "add" for "sub").
+
+
+int Calculator::pred(int x)         //x--
+{
+	// invert highest bit
+	return ( x ^ 0x08000000 );
+}
+
+int Calculator::add(int x, int y)   //x+y
+{
+	if (y == 0) return x;
+	if (x == 0) return y;
+
+	typedef int (Calculator::*calcm)(int x);
+	calcm a = &Calculator::succ;
+ 
+
+	if (y > 0)
+	{
+		
+	}
+	else
+	{
+		for (int i = 0; i - )
+	}
+	
+
+	/*
+	for (int i = 0; i < y; i=succ(i))
+		x = succ(x);
+	*/
+
+	return x;
+}
+
+int Calculator::sub(int x, int y)   //x-y
+{
+	
+	/*
+	typedef int (Calculator::*calcm)(int x, int y);
+	calcm a = &Calculator::add;
+	*/
+
+	return add(x, neg(y));
+}
+
+int Calculator::mul(int x, int y)   //x*y
+{
+	return x*y;
+}
+
+int Calculator::div(int x, int y)   // x/y
+{
+	if (x == 0) return 0;
+	if (y == 1) return x;	
+	
+	int div = 1, remain = x;
+	
+	for (div; remain > y; div = succ(div))
+	{
+		remain = sub(remain ,y);
+		// printf("x: %d - y: %d - remain: %d - div: %d \n", x, y, remain, div);
+	}
+
+	/*
+	while (remain > y)
+	{
+		remain = sub(remain,y);
+		div = succ(div);
+	}
+	*/
+
+	return div;
+}
+
+int Calculator::exp(int x, int y)   //x^y
+{
+	if (y == 0) return 0;
+	if (y == 1) return x;
+
+	if (x == 0) return 0;
+	if (x == 1) return 1;
+
+	return 1337;
+}
