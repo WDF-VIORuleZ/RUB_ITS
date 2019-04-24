@@ -11,6 +11,7 @@
  - Einführung Kryptografie 2 ( tools ):
    - square-mulitply
    - baby-step-giant-step
+   - polynomial long division
 
  - Informatik 2
    - Calculator
