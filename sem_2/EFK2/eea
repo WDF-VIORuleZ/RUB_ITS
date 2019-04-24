@@ -6,7 +6,7 @@ import sys
 def gcd(a, b):
     u, v, s, t = 1, 0, 0, 1
     while b!=0:
-        q=a//b
+        q=a/b
         a, b = b, a-q*b
         u, s = s, u-q*s
         v, t = t, v-q*t
@@ -18,9 +18,10 @@ def modinverse(a, n):
     return u % n
 
 def main():
-    if len(sys.argv < 2):
+    if len(sys.argv) < 2:
         print( __file__ + " <number> <modulo>")
-    print (modinverse(sys.argv[1], sys.argv[2]))
+    else:
+        print (modinverse(sys.argv[1], sys.argv[2]))
 
 if __name__ == "__main__":
     main()

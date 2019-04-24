@@ -1,0 +1,8 @@
+
+*.bin
+
+*.ipch
+
+sem_2/INFO2/calculator/\.vscode/settings\.json
+
+sem_2/INFO2/calculator/out/
