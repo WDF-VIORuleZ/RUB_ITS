@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-# Towel 2017
-
 # https://gist.github.com/0xTowel/b4e7233fc86d8bb49698e4f1318a5a73
 
 from math import ceil, sqrt
@@ -29,5 +27,12 @@ def bsgs(g, h, p):
     # Solution not found
     return None
 
+def main():
+    if len(sys.argv) is 4:
+        print(bsgs(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])))
+    else:
+        print(f"usage: {__file__} [g, h, p]")
+        exit(-1)
 
-print(bsgs(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])))
+if __name__ == "__main__":
+    main()
