@@ -1,0 +1,26 @@
+#!/bin/python3
+
+import sys
+
+def test(a, b):
+    print(f"{a} {b}")
+
+def create_table(a:int, b:int, mod:int, max_x:int=10, max_y:int=6):
+    for y in range(1, max_y+1):
+        print(f"[Y = {y}]")
+        for x in range(1, max_x+1):
+            n_y, n_x, n_a = y**2, pow(x,3), a*x
+            print(f" ({y}:{x}) {n_y} = {n_x} + {n_a} + {b} = { (n_y + n_x + n_a + b) % mod} mod {mod}")
+
+def main():
+    if len(sys.argv) is 6:
+        create_table(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]))
+    elif len(sys.argv) is 4:
+        create_table(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]))
+    else:
+        print(f"usage: {__file__} [ a, b, mod, (max_y, max_x) ]")
+        exit(-1)
+
+
+if __name__ == "__main__":
+    main()
