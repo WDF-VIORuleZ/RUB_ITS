@@ -13,6 +13,7 @@
    - square-mulitply
    - baby-step-giant-step
    - polynomial long division
+   - ecc_table_gen
 
  - Informatik 2
    - Calculator

@@ -7,18 +7,24 @@ results = dict()
 def test(a, b):
     print(f"{a} {b}")
 
-def create_table(a:int, b:int, mod:int, max_x:int=10, max_y:int=6):
-    for y in range(1, max_y+1):
+def create_table(a:int, b:int, mod:int=7, max_x:int=6, max_y:int=6):
+    for y in range(max_y+1):
         print(f"[Y = {y}]")
-        for x in range(1, max_x+1):
-            n_y, n_x, n_a = y**2, pow(x,3), a*x
-            print(f" ({y}:{x}) {n_y} = {n_x} + {n_a} + {b} = { (n_y + n_x + n_a + b) % mod} mod {mod}")
-            if n_y == n_x:
+        for x in range(max_x+1):
+            n_y =y**2 % mod
+            n_x = pow(x,3) % mod
+            n_a = a*x % mod
+            res = (n_x + n_a + b) % mod
+            print(f" ({x}:{y}) {n_y} = {n_x} + {n_a} + {b} = {res} mod {mod}")
+            """
+            if n_y == res:
                 results[y] = x
-
+            """
+    """
     print("Valid points on curve:")
     for x,y in results.items():
             print(f"P({x}|{y})")
+    """
 
 def main():
     if len(sys.argv) is 6:
