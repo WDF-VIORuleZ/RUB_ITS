@@ -1,0 +1,60 @@
+#!/bin/python3
+
+import sys
+
+# unholy global section
+g_mod   = int(sys.argv[6])
+p_ecc_a = int(sys.argv[1])
+
+class point(x, y):
+    def __init__(self, p_x, p_y):
+        self.x = p_x
+        self.y = p_y
+
+    def __add__(self, other:point):
+        x_1, x_2 = self.x, other.x
+        y_1, y_2 = self.y, other.y
+
+        # TODO: better modulo, eea for inverse (import module)
+        if equal(other):
+            s = ((3*(x_1**2) + p_ecc_a) / 2*y_1 ) % g_mod
+
+        else:   
+            s = (y_2 - y_1) / (x_2 - x_1)
+
+        x_3 = ( s**2 - x_1 - x_2 )   % g_mod
+        y_3 = ( s*(x_1 - x_3) - y_1) % g_mod
+
+
+    def equal(self, other:point):
+        return self.x == other.x and self.y == other.y
+
+
+def daa(ecc_a:int, ecc_b:int, p_x:int, p_y:int, d:int):
+    P = point(p_x, p_y)
+    T = P
+    d_bin = bin(d)[:2]
+
+    # len(d) = t + 1
+    # t - 1  = len(d) - 2
+    for i in range(len(d_bin) - 2, -1, -1, -1):
+        T += T % g_mod
+        if d_bin[i] == 1:
+            
+    return T
+
+
+def main():
+    if len(sys.argv) < 7:
+        print(f"usage: ./{__file__} [ecc_a] [ecc_b] [x] [y] [d] [mod]")
+        exit(-1)
+
+    else:   
+        p_ecc_b, p_p_x, p_p_y, p_d = int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])
+        result = daa(p_ecc_a, p_ecc_b, p_p_x, p_p_y, p_d)
+
+        print(f"dlog_({p_p_x},{p_p_y}) = {result}")
+        exit(1)
+
+if __name__ == "__main__":
+    main()

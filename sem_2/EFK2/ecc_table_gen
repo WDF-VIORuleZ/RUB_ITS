@@ -2,13 +2,8 @@
 
 import sys
 
-results = dict()
-
-def test(a, b):
-    print(f"{a} {b}")
-
 def create_table(a:int, b:int, mod:int=7, max_x:int=6, max_y:int=6):
-    for y in range(max_y+1):
+    for y in range(max_y + 1):
         print(f"[Y = {y}]")
         for x in range(max_x+1):
             n_y =y**2 % mod
@@ -16,21 +11,16 @@ def create_table(a:int, b:int, mod:int=7, max_x:int=6, max_y:int=6):
             n_a = a*x % mod
             res = (n_x + n_a + b) % mod
             print(f" ({x}:{y}) {n_y} = {n_x} + {n_a} + {b} = {res} mod {mod}")
-            """
-            if n_y == res:
-                results[y] = x
-            """
-    """
-    print("Valid points on curve:")
-    for x,y in results.items():
-            print(f"P({x}|{y})")
-    """
 
 def main():
     if len(sys.argv) is 6:
         create_table(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]))
+        exit(0)
+
     elif len(sys.argv) is 4:
         create_table(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]))
+        exit(0)
+
     else:
         print(f"usage: {__file__} [ a, b, mod, (max_y, max_x) ]")
         exit(-1)
