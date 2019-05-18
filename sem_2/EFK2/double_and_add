@@ -1,4 +1,5 @@
 #!/bin/python3
+# -*- coding:utf-8 -*-
 
 import sys
 
@@ -11,12 +12,16 @@ class point(x, y):
         self.x = p_x
         self.y = p_y
 
+
+    def equal(self, other:point):
+        return self.x == other.x and self.y == other.y
+
     def __add__(self, other:point):
         x_1, x_2 = self.x, other.x
         y_1, y_2 = self.y, other.y
 
         # TODO: better modulo, eea for inverse (import module)
-        if equal(other):
+        if self.equal(other):
             s = ((3*(x_1**2) + p_ecc_a) / 2*y_1 ) % g_mod
 
         else:   
@@ -24,10 +29,6 @@ class point(x, y):
 
         x_3 = ( s**2 - x_1 - x_2 )   % g_mod
         y_3 = ( s*(x_1 - x_3) - y_1) % g_mod
-
-
-    def equal(self, other:point):
-        return self.x == other.x and self.y == other.y
 
 
 def daa(ecc_a:int, ecc_b:int, p_x:int, p_y:int, d:int):
@@ -39,8 +40,9 @@ def daa(ecc_a:int, ecc_b:int, p_x:int, p_y:int, d:int):
     # t - 1  = len(d) - 2
     for i in range(len(d_bin) - 2, -1, -1, -1):
         T += T % g_mod
-        if d_bin[i] == 1:
-            
+        if d_bin[i] == 1: 
+
+        
     return T
 
 
