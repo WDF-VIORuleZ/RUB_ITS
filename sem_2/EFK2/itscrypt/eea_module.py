@@ -1,9 +1,3 @@
-#!/bin/python3
-# -*- coding:utf-8 -*-
-
-import argparse
-
-
 def eea(mod, el): #Condition: gcd(m,x)=1
     m = [mod]
     x = [el]
