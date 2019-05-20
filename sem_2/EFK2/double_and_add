@@ -2,53 +2,96 @@
 # -*- coding:utf-8 -*-
 
 import sys
+# from itscrypt import *
+
+if len(sys.argv) < 7:
+    print(f"usage: {__file__} [ecc_a] [ecc_b] [x] [y] [d] [mod]")
+    exit(-1)
 
 # unholy global section
 g_mod   = int(sys.argv[6])
 p_ecc_a = int(sys.argv[1])
 
-class point(x, y):
+def eea(mod:int, el:int): #Condition: gcd(m,x)=1
+    m = [mod]
+    x = [el]
+    q = []
+    s = [1]
+    t = [0]
+    ctr = 0
+    
+    while(x[ctr] != 0):
+        q.insert(0,int(m[ctr]/x[ctr]))
+        m.append(x[ctr])
+        x.append(m[ctr]%x[ctr])
+        ctr += 1
+    q.insert(0,0)
+    
+    for i in range(len(q)-1):
+        s.append(t[i])
+        t.append(s[i]-(q[i+1]*t[i]))
+
+    q = q[::-1]
+    s = s[::-1]
+    t = t[::-1]
+    test = s[0] * m[0] + t[0] * x[0] 
+    return s
+
+
+class point:
     def __init__(self, p_x, p_y):
         self.x = p_x
         self.y = p_y
 
-
-    def equal(self, other:point):
+    def __eq__(self, other):
         return self.x == other.x and self.y == other.y
 
-    def __add__(self, other:point):
-        x_1, x_2 = self.x, other.x
-        y_1, y_2 = self.y, other.y
+    def __mod__(self, value:int):
+        self.x %= value
+        self.y %= value
 
-        # TODO: better modulo, eea for inverse (import module)
-        if self.equal(other):
-            s = ((3*(x_1**2) + p_ecc_a) / 2*y_1 ) % g_mod
+    def __iadd__(self, other):
+        self.x += other.x
+        self.y += other.y
+
+    def __isub__(self, other):
+        self.x -= other.x
+        self.y -= other.y
+
+    def __add__(self, other):
+        x_1 = self.x 
+        x_2 = other.x
+        y_1 = self.y
+        y_2 = other.y
+
+        if self == other:
+            s = ((3*(x_1**2) + p_ecc_a) * eea(2*y_1) ) % g_mod
 
         else:   
-            s = (y_2 - y_1) / (x_2 - x_1)
+            s = (y_2 - y_1) * eea(x_2 - x_1) % g_mod
 
         x_3 = ( s**2 - x_1 - x_2 )   % g_mod
         y_3 = ( s*(x_1 - x_3) - y_1) % g_mod
 
 
 def daa(ecc_a:int, ecc_b:int, p_x:int, p_y:int, d:int):
-    P = point(p_x, p_y)
-    T = P
+    P_point = point(p_x, p_y)
+    T_point:point = P_point
     d_bin = bin(d)[:2]
 
     # len(d) = t + 1
     # t - 1  = len(d) - 2
-    for i in range(len(d_bin) - 2, -1, -1, -1):
-        T += T % g_mod
+    for i in range(len(d_bin) - 2, -1, -1):
+        T_point = (T_point + T_point) % g_mod
         if d_bin[i] == 1: 
-
+            T_point = (T_point + P_point) % g_mod
         
-    return T
+    return T_point
 
 
 def main():
     if len(sys.argv) < 7:
-        print(f"usage: ./{__file__} [ecc_a] [ecc_b] [x] [y] [d] [mod]")
+        print(f"usage: {__file__} [ecc_a] [ecc_b] [x] [y] [d] [mod]")
         exit(-1)
 
     else:   
