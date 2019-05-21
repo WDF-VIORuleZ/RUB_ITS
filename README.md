@@ -18,4 +18,5 @@
  - Informatik 2
    - Calculator
    - Doubly Linked List
+   - HashFunc
  
